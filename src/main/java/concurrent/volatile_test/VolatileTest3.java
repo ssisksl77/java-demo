@@ -52,7 +52,7 @@ public class VolatileTest3 {
          * 새로운 값을 생성하여 FLAG값을 바꿀뿐이다. read-write의 내용이 아닌.
          * 그저 write만 하는 것이다!
          *
-         * 게다가 이 write은 이전 값이라는 전혀 관계가 없다. FLAG값은 toggle되는 내요면 안된다.
+         * 게다가 이 write은 이전 값이라는 전혀 관계가 없다. FLAG값은 toggle되는 내용이면면 안된다.
          * 이전 값을 이용하여 값을 바꾸려면 차라리 synchronize를 사용하는 것이 안전하다.
          */
 
