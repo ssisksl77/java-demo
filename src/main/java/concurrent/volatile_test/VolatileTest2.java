@@ -9,6 +9,7 @@ import java.util.concurrent.Executors;
  * 하지만 아래의 코드는 우리가 생각한 것처럼 작동하지 않는다. 왜일까?
  */
 public class VolatileTest2 {
+    // 우리는 다음 예제에 이곳에 volatile을 붙일 것이다. 지금은 없다.
     private static boolean FLAG = true;
 
     public static void main(String[] args) {
