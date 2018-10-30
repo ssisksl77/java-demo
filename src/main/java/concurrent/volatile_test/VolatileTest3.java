@@ -12,7 +12,7 @@ public class VolatileTest3 {
     private volatile static boolean FLAG = true;
 
     public static void main(String[] args) {
-        // 이번에는 COUNTER를 더하는 것이 아니라. FLAG가 true인 동안은 무한루프를 도는 것이다.
+        // 이번에는 VolatileTest1.COUNTER처럼 값을 더하는 것이 아니라. FLAG가 true인 동안은 무한루프를 도는 것이다.
         // FLAG가 false가 되었을 때 "bye"를 출력하고 멈출 것이다.
         Runnable r = () -> {
             while(FLAG) {
@@ -46,10 +46,11 @@ public class VolatileTest3 {
 
         /**
          * 아주 잘 작동하는 것을 알 수 있다.
-         * COUNTER와 무슨 차이가 있길래 여기선 잘 된다는 것일까?
-         * 여기서는 조회하여 값을 변동하는 내용이 없다.
-         *
-         * 새로운 값을 생성하여 FLAG값을 바꿀뿐이다. read-write의 내용이 아닌.
+         * VolatileTest1.COUNTER와 무슨 차이가 있길래 여기선 잘 된다는 것일까?
+         * 
+         * FLAG에서는 조회하여 값을 변동하는 내용이 없다.
+         * 
+         * 새로운 값을 생성하여 FLAG값을 바꿀 뿐이다. read-write의 내용이 아닌
          * 그저 write만 하는 것이다!
          *
          * 게다가 이 write은 이전 값이라는 전혀 관계가 없다. FLAG값은 toggle되는 내용이면 안된다.
