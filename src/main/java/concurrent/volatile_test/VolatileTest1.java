@@ -66,7 +66,8 @@ public class VolatileTest1 {
          * 그렇다면 Volatile이 어디에 쓰이면 좋을까?
          *
          * 인터넷에 BEST PRACTICE들을 찾아보는 것이 좋을 것이다.
-         * 다음에는 volatile을 쓸만한 좋은 예가될 작동하지 않는 예를 한번 보자.
+         * 하나 정도는 알아보자.
+         * 다음에는 volatile을 쓸만한 좋은 예가 될 [volatile를 쓰면 좋은 예]를 한번 보자.
          */
     }
 }
