@@ -7,11 +7,9 @@ package concurrent.atomic_demo.unsafe_demo;
  * native memory 할당을 하여 생성을 할 수 있다.
  *
  * Native memory 할당은 Java NIO package에서 제공하는 direct ByteBuffer을 예로 들 수 있다.
- * heap memory와 다르게, native memory는 heap 공간에 있지 않다. 그리고 [
- *
- Native memory allocation is used by for example direct byte buffers that are offered in Java's NIO packages.
- Other than heap memory, native memory is not part of the heap area and [can be used non-exclusively for example for communicating with other processes.
- As a result, Java's heap space is in competition with the native space: the more memory you assign to the JVM, the less native memory is left.
+ * heap memory와 다르게, native memory는 heap 공간에 있지 않다. 그리고 다른 프로세스와 통신할 때 비독점적으로 쓰일 수 있다.
+ * 결과적으로, Java의 힙 공간은 native 공간과 경쟁한다.
+ * JVM에 더 많은 메모리를 넣으면, 적은 native memory 공간이 남는다.
  */
 public class UnsafeDemo3 {
 }
