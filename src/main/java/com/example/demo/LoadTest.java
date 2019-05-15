@@ -28,7 +28,7 @@ public class LoadTest {
         for (int i = 0; i < 100; i++) {
             exec.execute(() -> {
                 int idx = counter.addAndGet(1);
-                log.info("Thread-" + idx);
+                //log.info("Thread-" + idx);
 
                 StopWatch sw = new StopWatch();
                 sw.start();
@@ -36,7 +36,7 @@ public class LoadTest {
                 rt.getForObject(url, String.class);
 
                 sw.stop();
-                log.info("Elapsed : {} {}", idx, sw.getTotalTimeSeconds());
+                //log.info("Elapsed : {} {}", idx, sw.getTotalTimeSeconds());
             });
         }
 
@@ -44,7 +44,7 @@ public class LoadTest {
         exec.awaitTermination(100, TimeUnit.SECONDS);
 
         main.stop();
-        log.info("Total: {}", main.getTotalTimeSeconds());
+        //log.info("Total: {}", main.getTotalTimeSeconds());
 
     }
 }
