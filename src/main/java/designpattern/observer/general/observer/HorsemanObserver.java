@@ -1,7 +1,5 @@
 package designpattern.observer.general.observer;
 
-import static org.hamcrest.CoreMatchers.instanceOf;
-
 import designpattern.observer.general.subject.Messenger;
 import designpattern.observer.general.subject.Subject;
 
