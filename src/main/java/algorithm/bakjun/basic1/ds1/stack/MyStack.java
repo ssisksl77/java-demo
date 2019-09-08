@@ -1,4 +1,4 @@
-package algorithm.bakjun.basic1.ds1;
+package algorithm.bakjun.basic1.ds1.stack;
 
 import java.util.Arrays;
 import java.util.Collection;
