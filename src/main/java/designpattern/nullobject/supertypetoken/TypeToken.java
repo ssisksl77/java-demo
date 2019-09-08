@@ -30,7 +30,7 @@ public class TypeToken {
 		TypesafeMap m = new TypesafeMap();
 		m.put(Integer.class, 1);
 		m.put(String.class, "String");
-		m.put(List.class, Arrays.asList(1, 2, 3));
+		m.put(List.class, Arrays.asList(1, 2, 3)); // List<Integer>
 	
 		System.out.println(m.get(Integer.class));
 		System.out.println(m.get(String.class));
