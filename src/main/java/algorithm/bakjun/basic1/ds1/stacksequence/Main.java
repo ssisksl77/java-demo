@@ -36,7 +36,9 @@ public class Main {
 				}
 			} else { // 숫자가 작거나 같으면 pop으로 빼내야 함.
 				if (stack[stackIndx-1] != num) { // 지금 빼낼값이 다르면 어떻게 해야 하는
-					System.out.println("NO");
+					bw.write("NO");
+					bw.close();
+					br.close();
 					return;
 				}
 			}
