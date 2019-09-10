@@ -1,8 +1,10 @@
 package algorithm.bakjun.basic1.ds1_practice.stick;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.Stack;
 
 /**
@@ -20,26 +22,30 @@ import java.util.Stack;
 public class Main {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
 		String parens = br.readLine().trim();
 		int totalCnt  = 0;
 		Stack<Character> stack = new Stack<>();
 		
 		for (int i = 0; i < parens.length(); i++) {
-			char arr = parens.charAt(i);
+			char paren = parens.charAt(i);
 			
-			if (arr == '(') {
-				stack.push(arr);
-			} else if (arr == ')') {
-				if (stack.peek() == '(') {
+			if (paren == '(') {
+				stack.push(paren);
+			} else {
+				if (parens.charAt(i-1) == '(') {
 					stack.pop();
 					totalCnt += stack.size();
 				} else {
-					stack.pop();  
+					stack.pop();
 					totalCnt++;  // 상자 끝이니까 하나 추가
 				}
 			}
 		}
-		System.out.println(totalCnt);
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+		bw.write(String.valueOf(totalCnt));
+		bw.flush();
+		bw.close();
 		br.close();
 	}
 }
