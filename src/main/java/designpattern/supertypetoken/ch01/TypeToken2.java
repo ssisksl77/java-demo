@@ -1,4 +1,4 @@
-package designpattern.nullobject.supertypetoken.ch01;
+package designpattern.supertypetoken.ch01;
 
 import java.awt.List;
 import java.lang.reflect.Array;

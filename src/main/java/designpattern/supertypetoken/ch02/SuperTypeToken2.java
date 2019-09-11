@@ -1,4 +1,4 @@
-package designpattern.nullobject.supertypetoken;
+package designpattern.supertypetoken.ch02;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
@@ -79,7 +79,7 @@ public class SuperTypeToken2 {
 		m.put(new TypeReference<Integer> () {}, 1);
 		m.put(new TypeReference<String> () {}, "sr");
 		m.put(new TypeReference<List<Integer>>() {}, Arrays.asList(1,2,3));
-		//m.put(new TypeReference<List<String>>() {}, Arrays.asList(1,2,3));
+		// m.put(new TypeReference<List<String>>() {}, Arrays.asList(1,2,3));
 		m.put(new TypeReference<List<String>>() {}, Arrays.asList("A","B","C"));
 		
 		
@@ -87,7 +87,7 @@ public class SuperTypeToken2 {
 		System.out.println(m.get(new TypeReference<String>() {}));
 		System.out.println(m.get(new TypeReference<List<Integer>>() {}));
 		System.out.println(m.get(new TypeReference<List<String>>() {}));
-		//이렇게 복잡한걸 항상 구현해야 하나? 
+		// 이렇게 복잡한걸 항상 구현해야 하나? 
 		// 스프링에 있다.
 	}
 }

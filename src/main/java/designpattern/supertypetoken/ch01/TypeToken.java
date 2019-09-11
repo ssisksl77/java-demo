@@ -1,4 +1,4 @@
-package designpattern.nullobject.supertypetoken.ch01;
+package designpattern.supertypetoken.ch01;
 
 import java.awt.List;
 import java.lang.reflect.Array;
@@ -6,6 +6,11 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * 
+ * @author yuhnam
+ *
+ */
 public class TypeToken {
 	static class Generic<T> {
 		T value;

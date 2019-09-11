@@ -1,4 +1,4 @@
-package designpattern.nullobject.supertypetoken;
+package designpattern.supertypetoken.ch02;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
@@ -21,7 +21,7 @@ public class SuperTypeToken {
 		
 		Sup<String> s = new Sup<>();
 		// --------------
-		// String이 아니라 Object가 됨...
+		// 런타임에서는 Sup<String>이 아니라 Sup<Object>가 됨...
 		// 제네릭이 사라진다. 하지만 제네릭을 살릴 수 있는 방법이 있다.
 		System.out.println(s.getClass().getDeclaredField("value").getType());
 		
@@ -35,6 +35,7 @@ public class SuperTypeToken {
 		class Sub2 extends Sup<List<String>> {
 			
 		}
+		
 		Sub2 b2 = new Sub2();
 		Type t2 = b2.getClass().getGenericSuperclass();
 		ParameterizedType pType2 = (ParameterizedType) t2;

@@ -1,4 +1,4 @@
-package designpattern.nullobject.supertypetoken;
+package designpattern.supertypetoken.ch03;
 
 import java.util.List;
 import java.util.Map;
@@ -14,9 +14,5 @@ public class SpringTypeReference {
 		ParameterizedTypeReference typeRef = new ParameterizedTypeReference<List<Map<Set<Integer>, String>>>() {};
 		
 		System.out.println(typeRef.getType()); // Spring 3.2 
-		
-		// 언제 사용해야 하는가?
-		// when to use. 
-		// 1:30 수퍼타입 와드.
 	}
 }
