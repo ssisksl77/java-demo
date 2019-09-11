@@ -1,4 +1,4 @@
-package designpattern.nullobject.supertypetoken;
+package designpattern.nullobject.supertypetoken.ch01;
 
 import java.awt.List;
 import java.lang.reflect.Array;
@@ -6,10 +6,13 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-import designpattern.nullobject.supertypetoken.TypeToken.TypesafeMap;
-
-// 타입토큰의 한
-public class TypeToken2 {
+public class TypeToken {
+	static class Generic<T> {
+		T value;
+		void set(T t) {}
+		T get() { return null; }
+	}
+	
 	static class TypesafeMap {
 		Map<Class<?>, Object> map = new HashMap<>();
 		void put (Class<?> clazz, Object value) {
@@ -19,11 +22,15 @@ public class TypeToken2 {
 			return clazz.cast(map.get(clazz));
 		}
 	}
-	
+//	안전한메소드 
+//	<T> T create(Class<T> clazz) throws InstantiationException, IllegalAccessException {
+//		return clazz.newInstance();
+//	}
 	public static void main(String[] args) {
 		TypesafeMap m = new TypesafeMap();
-		m.put(List.class, Arrays.asList(1, 2, 3));  // 1. List<Integer>.class 가 안된다. !!!!
-		m.put(List.class, Arrays.asList("a","b","c"));  // 2. super type token by Neal Gafter
+		m.put(Integer.class, 1);
+		m.put(String.class, "String");
+		m.put(List.class, Arrays.asList(1, 2, 3)); // List<Integer>
 	
 		System.out.println(m.get(Integer.class));
 		System.out.println(m.get(String.class));
