@@ -1,6 +1,8 @@
 package algorithm.meilprogramming;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -21,35 +23,28 @@ public class Test06 {
 		int[][] input1 = {{2,4}, {1,5}, {7,9}};
 		int[][] input2 = {{3,6}, {1,3}, {2,4}};
 		
-		int[][] res = solve(input1);
-		// int[][] res2 = solve(input2);
+		solve(input1);
+		solve(input2);
 	}
 
-	private static int[][] solve(int[][] input) {
-		List<int[]> pairs = new ArrayList<>();
-		for (int[] i : input) {
-			pairs.add(i);
-		}
-		List<int[]> res = new ArrayList<>();
-		for(boolean done = false; done == false; done = true) {
-			res = new ArrayList<>();
-			for (int i = 1 ; i < pairs.size(); i++) {
-				// 둘중 하나의 END가 START보다 크거나 같으면 겹침.
-				if( pairs.get(i-1)[1] >= pairs.get(i)[0] || pairs.get(i)[1] >= pairs.get(i-1)[0]) {
-					done = false;
-					int min = Math.min(Math.min(pairs.get(i-1)[0], pairs.get(i)[0]), Math.min(pairs.get(i-1)[1], pairs.get(i)[1]));
-					int max = Math.max(Math.max(pairs.get(i-1)[0], pairs.get(i)[0]), Math.max(pairs.get(i-1)[1], pairs.get(i)[1]));
-					res.add(new int[] { min, max });
-				}
-				res.add(new int[] {pairs.get(i)[0], pairs.get(i)[1]});
+	private static void solve(int[][] input) {
+		Arrays.sort(input, new Comparator<int[]>(){
+			@Override public int compare(int[] o1, int[] o2) {
+				return o1[0] < o2[0] ? -1 : o1[0] == o2[0] ? 0 : 1;
 			}
-			pairs = new ArrayList<>(res);
+		});
+		List<int[]> res = new ArrayList<>();
+		res.add(new int[] {input[0][0], input[0][1]});
+		for (int i = 1; i < input.length; i++) {
+			if (res.get(res.size()-1)[1] >= input[i][0]) {
+				res.get(res.size()-1)[1] = Math.max(res.get(res.size()-1)[1], input[i][1]);
+			} else {
+				res.add(input[i]);
+			}
 		}
 		
-		for (int[] i : res) {
-			System.out.println(i[0] +" " + i[1]);
+		for (int[] a : res) {
+			System.out.println(a[0] + " " + a[1]);
 		}
-		
-		return null;
 	}
 }

@@ -74,35 +74,18 @@ import java.util.concurrent.Phaser;
  * 	
  * 
  * 3. Implementing Logic Using Phaser API
- * Let's say that we want to coordinate multiple phases of actions. Three threads will process the first phase, 
- * and two threads will process the second phase.
- * 이제 액션을 여러 단계로 만들어서 조정하자. 3개의 스레드가 있으며
+ * Let's say that we want to coordinate multiple phases of actions. 
+ * Three threads will process the first phase, and two threads will process the second phase.
+ * 이제 액션을 여러 단계로 만들어서 조정하자. 
+ * 3개의 스레드가 있으며, 한 개는 첫번째 단계를 처리하고, 두 스레드는 두번째 단계를 처리한다.
+ * {@link LongRunningAction} 코드를 보자.
+ * 
+ * 
+ * 
  * 
  * @author yuhnam
  *
  */
-/*class LongRunningAction implements Runnable {
-    private String threadName;
-    private Phaser ph;
- 
-    LongRunningAction(String threadName, Phaser ph) {
-        this.threadName = threadName;
-        this.ph = ph;
-        ph.register();
-    }
- 
-    @Override
-    public void run() {
-        ph.arriveAndAwaitAdvance();
-        try {
-            Thread.sleep(20);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        ph.arriveAndDeregister();
-    }
-}*/
-
 
 public class Test1 {
 	

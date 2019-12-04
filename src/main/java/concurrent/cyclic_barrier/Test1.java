@@ -74,21 +74,21 @@ public class Test1 {
 	}
 	
 	public static void code2 () {
-		CyclicBarrier cyclicBarrier = new CyclicBarrier(2);
-		Thread t = new Thread(() -> {
-			try {
-				cyclicBarrier.await();
-				cyclicBarrier.await();
-			} catch (InterruptedException | BrokenBarrierException e) {
-				e.printStackTrace();
-			}
-		});
-		
-		t.start();
-		System.out.println("code2");
-		System.out.println(1 ==  cyclicBarrier.getNumberWaiting());
-		System.out.println(cyclicBarrier.isBroken());
-		System.out.println("===");
+CyclicBarrier cyclicBarrier = new CyclicBarrier(2);
+Thread t = new Thread(() -> {
+	try {
+		cyclicBarrier.await();
+		cyclicBarrier.await();
+	} catch (InterruptedException | BrokenBarrierException e) {
+		e.printStackTrace();
+	}
+});
+
+t.start();
+System.out.println("code2");
+System.out.println(1 ==  cyclicBarrier.getNumberWaiting());
+System.out.println(cyclicBarrier.isBroken());
+System.out.println("===");
 	}
 	
 	
@@ -101,47 +101,47 @@ public class Test1 {
 	}
 
 	private static void code4() throws InterruptedException, BrokenBarrierException, TimeoutException {
-		// https://docs.oracle.com/javase/6/docs/api/java/util/concurrent/package-summary.html
-		// https://stackoverflow.com/questions/6916385/is-there-a-concurrent-list-in-javas-jdk 참고
-		List<String> outputScraper = Collections.synchronizedList(new ArrayList<>());
-		CyclicBarrier cyclicBarrier = new CyclicBarrier(7);
-		ExecutorService es = Executors.newFixedThreadPool(20);
-		for (int i = 0; i < 20; i++) {
-			es.execute(() -> {
-				int numberWaiting = cyclicBarrier.getNumberWaiting();
-				if (numberWaiting >= 0) {
-					outputScraper.add("Count Updated"); 
-				}
-				try {
-					cyclicBarrier.await();
-				} catch (InterruptedException | BrokenBarrierException e) {
-					e.printStackTrace();
-				}
-			});			
-		}
-		
-		es.shutdown();
-		System.out.println(outputScraper);
-		System.out.println(outputScraper.size() > 7);
-		cyclicBarrier.await();
+	// https://docs.oracle.com/javase/6/docs/api/java/util/concurrent/package-summary.html
+	// https://stackoverflow.com/questions/6916385/is-there-a-concurrent-list-in-javas-jdk 참고
+	List<String> outputScraper = Collections.synchronizedList(new ArrayList<>());
+	CyclicBarrier cyclicBarrier = new CyclicBarrier(7);
+	ExecutorService es = Executors.newFixedThreadPool(20);
+	for (int i = 0; i < 20; i++) {
+		es.execute(() -> {
+			int numberWaiting = cyclicBarrier.getNumberWaiting();
+			if (numberWaiting >= 0) {
+				outputScraper.add("Count Updated"); 
+			}
+			try {
+				cyclicBarrier.await();
+			} catch (InterruptedException | BrokenBarrierException e) {
+				e.printStackTrace();
+			}
+		});			
+	}
+	
+	es.shutdown();
+	System.out.println(outputScraper);
+	System.out.println(outputScraper.size() > 7);
+	cyclicBarrier.await();
 	}
 
 	private static void code3() {
-		List<String> outputScraper = Collections.synchronizedList(new ArrayList<>());
-		CountDownLatch countDownLatch = new CountDownLatch(7);
-		ExecutorService es = Executors.newFixedThreadPool(20);
-		for (int i = 0; i < 20; i++) {
-			es.execute(() -> {
-				long prevValue = countDownLatch.getCount();
-				countDownLatch.countDown();
-				if (countDownLatch.getCount() != prevValue) {
-					outputScraper.add("Count Updated");
-				}
-			});
+List<String> outputScraper = Collections.synchronizedList(new ArrayList<>());
+CountDownLatch countDownLatch = new CountDownLatch(7);
+ExecutorService es = Executors.newFixedThreadPool(20);
+for (int i = 0; i < 20; i++) {
+	es.execute(() -> {
+		long prevValue = countDownLatch.getCount();
+		countDownLatch.countDown();
+		if (countDownLatch.getCount() != prevValue) {
+			outputScraper.add("Count Updated");
 		}
-		
-		es.shutdown();
-		System.out.println(outputScraper);
-		System.out.println(outputScraper.size() <= 7);
+	});
+}
+
+es.shutdown();
+System.out.println(outputScraper);
+System.out.println(outputScraper.size() <= 7);
 	}
 }
