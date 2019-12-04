@@ -1,5 +1,5 @@
 package java8_impatiant.concurrent.sec08;
-
+/*
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
@@ -8,7 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
+import javafx.stage.Stage;*/
 
 import java.net.URL;
 import java.util.Scanner;
@@ -46,8 +46,8 @@ import java.util.Scanner;
  * Platform.runLater(() ->  message.appendText(line + "\n"));
  *
  */
-public class WebReader extends Application {
-    TextArea message = new TextArea("");
+public class WebReader /*extends Application*/ {
+/*    TextArea message = new TextArea("");
 
     public void start(Stage stage) {
         VBox pane = new VBox(10);
@@ -80,5 +80,5 @@ public class WebReader extends Application {
             }
         };
         new Thread(task).start();
-    }
+    }*/
 }

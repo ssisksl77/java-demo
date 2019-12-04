@@ -27,7 +27,7 @@ public class QuickSort {
 		int i = (left - 1); // i는 pivot보다 작은 숫자의 카운트.
 		// if current element is smaller than the pivot
 		for (int j = left; j < right; j++) {
-			System.out.println(j);
+			// System.out.println(j);
 			if (arr[j] < pivot) {
 				i++;
 				int temp = arr[i];  // i는 큰값, j는 현재위치
@@ -60,6 +60,6 @@ public class QuickSort {
 		QuickSort qs = new QuickSort(arr);
 		qs.sort();
 		
-		//qs.display();
+		qs.display();
 	}
 }

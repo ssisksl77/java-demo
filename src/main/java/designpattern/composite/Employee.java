@@ -6,7 +6,6 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.assertj.core.internal.Lists;
 
 public class Employee {
 	private enum LEVEL {BOSS, MANAGER, DEVELOPER}
