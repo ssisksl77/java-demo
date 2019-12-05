@@ -24,6 +24,7 @@ class Node {
         this.val = val;
         this.next = next;
     }
+    
     void print() {
         System.out.print(val);
         if (next != null) {
@@ -43,26 +44,48 @@ public class Test13 {
         Node n4 = new Node(2, n3);
         Node root = new Node(1, n4);
         int N = 2;
-        root.print();
-        Node res = solve(root, 2);
+//        root.print();
+        Node res = solve(root, N);
         res.print();
+        
+        
+        // Input: 1->2->3, N=3
+        // Output: 2->3
+        Node n13 = new Node(3, null);
+        Node n12 = new Node(2, n13);
+        Node n11 = new Node(1, n12);
+        Node res2 = solve(n11, 3);
+        res2.print();
+        
+        // Input: 1, N=1
+        // Output: null
+        Node n21 = new Node(1, null);
+        Node res3 = solve(n21, 1);
+        System.out.println(res3);
+        
     }
 
     private static Node solve(Node root, int N) {
         Node node1 = root;
         Node node2 = root;
+        if (root == null) return null;
+        
         while(N > 0) {
-            if (node2.next == null) return null;
             node2 = node2.next;
             N--;
         }
+        
+        if (node2 == null) {
+        	root = root.next;
+        	return root;
+        }
+        
         while(node2.next != null) {
             node1 = node1.next;
             node2 = node2.next;
         }
 
         node1.next = node1.next.next;
-
         return root;
 
     }
