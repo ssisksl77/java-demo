@@ -5,8 +5,8 @@ package algorithm.sort;
  */
 public class QuickSort3 {
     public static void main(String[] args) {
-        int[] ints = {3,4,2,1,1,1,2,3,4,5,6,88,9,0,4,5,9};
-
+        //int[] ints = {3,4,2,1,1,1,2,3,4,5,6,88,9,0,4,5,9};
+    	int[] ints = {3,4,5,76,7,2,23,4,234,1,2,2,1,1,4,6,7,8,9};
         solve(ints);
         for (int i : ints) {
             System.out.print(i + " ");
